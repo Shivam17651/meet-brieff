@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^3.31.0",
+    "aos": "^2.3.4",
     "axios": "^1.8.2",
     "formik": "^2.4.6",
     "next": "15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-fast-marquee": "^1.6.5",
     "react-hot-toast": "^2.5.2",
     "yup": "^1.6.1"
   },
