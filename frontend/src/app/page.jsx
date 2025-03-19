@@ -17,7 +17,7 @@ const Home = () => {
     <div className='bg-white grid grid-cols-2'>
     <div className='  mt-10'>
       <div className='mt-20 ml-20 col-span-1 ' data-aos = "fade-right">
-        <h2 className='text-blue-500 text-5xl font-bold p-10'>Meet Brief</h2>
+        <h2 className='text-blue-500 text-5xl font-bold p-10'>Meet                                     Brief</h2>
         <p className='font-bold text-2xl ml-10'>"Effortless meeting summaries with our Extension."</p>
         <button className='bg-yellow-500 rounded-md py-3 px-5 text-xl font-semibold text-white shadow-md ml-10 mt-10 hover:bg-yellow-600'>Download Now!</button>
         </div>
