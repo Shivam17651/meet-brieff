@@ -98,7 +98,7 @@ useEffect(() => {
         </div>
         </div>
         <div className='rounded-lg   ' data-aos="zoom-in">
-        <img className='h-120 rounded-lg shadow-lg ' src="/image/MyImg.jpg" alt="" />
+        <img className='h-120 rounded-lg shadow-lg ' src="/image/Shivam.jpg" alt="" />
         <div className='font-bold -translate-y-40 border  bg-white mx-3 rounded-lg shadow-lg px-4 w-60'>
           <h1 className='text-xl text-red-800 underline '>SHIVAM SRIVASTAV</h1>
           <p className='text-lg text-red-500  '>Developer</p>
@@ -112,7 +112,7 @@ useEffect(() => {
         </div>
         </div>
         <div className='rounded-lg  ' data-aos="zoom-in">
-        <img className='h-120 rounded-lg shadow-lg ' src="/image/MyImg.jpg" alt="" />
+        <img className='h-120 rounded-lg shadow-lg ' src="/image/Saurabh.jpg" alt="" />
         <div className='font-bold -translate-y-40 border  bg-white mx-3 rounded-lg shadow-lg px-4 w-60'>
           <h1 className='text-xl text-red-800 underline '>SAURABH TIWARI</h1>
           <p className='text-lg text-red-500  '>Developer</p>

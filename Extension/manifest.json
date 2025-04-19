@@ -1,0 +1,19 @@
+{
+    "manifest_version": 1,
+    "name": "Meet Brief",
+    "version": "1.0",
+    "description": "Automatically takes notes during Google Meet meetings",
+    "permissions": [
+      "activeTab",
+      "storage"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://meet.google.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }

@@ -1,45 +1,115 @@
+'use client'
 import React from 'react'
-
-
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import Link from 'next/link';
+ 
+               
 const Login = () => {
+
+  const validationSchema = Yup.object({
+    email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required'),
+    password: Yup.string()
+        .min(6, 'Password must be at least 6 characters')
+        .required('Password is required'),
+    });
+
+    const formik = useFormik({
+      initialValues: {
+          email: '',
+          password: '',
+      },
+      validationSchema: validationSchema,
+      onSubmit: (values) => {
+          console.log('Form submitted:', values);
+          // Here you would typically handle authentication
+          // e.g., call an API to verify credentials
+          axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users/authenticate`,values)
+          .then((result) => {
+            console.log(result.data);
+            localStorage.setItem('user', result.data.token);
+            toast.success("Login successful");
+            
+          }).catch((err) => {
+            console.log(err);
+            toast.error("Login failed. Please check your credentials");
+            
+          });
+      },
+  });
+
+
+
   return (
 <div className=" bg-linear-to-r from-blue-400 to-cyan-500 py-6 sm:py-8 lg:py-12 grid grid-cols-2 ">
   <div className=" mx-auto max-w-screen-2xl px-4 md:px-8">
-    <h2 className="mb-4 text-center text-2xl font-bold text-blue-800 md:mb-8 lg:text-3xl">
-      Login
+    <h2 className="mb-4 text-center text-4xl font-bold text-blue-800 md:mb-8 lg:text-3xl">
+      Login 
     </h2>
-    <form className=" bg-blue-700 mx-auto max-w-lg rounded-lg border shadow-lg">
+    <form 
+     className=" bg-blue-700 mx-auto max-w-lg rounded-lg border shadow-lg"
+     onSubmit={formik.handleSubmit} >
       <div className="flex flex-col gap-4 p-4 md:p-8 ">
         <div>
           <label
             htmlFor="email"
-            className="mb-2 inline-block text-sm text-white sm:text-base font-bold"
+            className="mb-2 inline-block text-xl text-white  font-bold"
           >
             Email
           </label>
           <input
+            id="email"
             name="email"
-            className="w-full rounded border bg-blue-50 px-3 py-2 text-white outline-none ring-indigo-300 transition duration-100 focus:ring"
+            type="email"
+            className={`w-full rounded border ${
+                formik.touched.email && formik.errors.email 
+                ? 'border-red-500 bg-red-50' 
+                : 'bg-gray-50'
+            } px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring`}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
           />
+           {formik.touched.email && formik.errors.email ? (
+                                <div className="text-red-500 text-sm mt-1">{formik.errors.email}</div>
+                            ) : null}
         </div>
         <div>
           <label
             htmlFor="password"
-            className="mb-2 inline-block text-sm text-white sm:text-base font-bold"
+            className="mb-2 inline-block text-white text-xl font-bold"
           >
             Password
           </label>
           <input
-            name="password"
-            className="w-full rounded border bg-blue-50 px-3 py-2 text-blue-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
-          />
+                                id="password"
+                                name="password"
+                                type="password"
+                                className={`w-full rounded border ${
+                                    formik.touched.password && formik.errors.password 
+                                    ? 'border-red-500 bg-red-50' 
+                                    : 'bg-gray-50'
+                                } px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring`}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.password}
+                            />
+                            {formik.touched.password && formik.errors.password ? (
+                                <div className="text-red-500 text-sm mt-1">{formik.errors.password}</div>
+                            ) : null}
         </div>
-        <button className="block rounded-lg bg-blue-800 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base">
+        <button
+        type= "submit"
+         className="block rounded-lg border-white border-2 bg-blue-800 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-blue-400 hover:shadow-lg focus-visible:ring active:bg-gray-600 md:text-base">
           Log in
         </button>
         <div className="relative flex items-center justify-center">
           <span className="absolute inset-x-0 h-px bg-gray-300" />
-          <span className="relative bg-white px-4 text-sm text-gray-400">
+          <span className="relative bg-white px-4 text-sm text-gray-700">
             Log in with social
           </span>
         </div>
@@ -88,15 +158,15 @@ const Login = () => {
           Continue with Google
         </button>
       </div>
-      <div className="flex items-center justify-center bg-gray-100 p-4">
+      <div className="flex rounded-md items-center justify-center bg-gray-100 p-4">
         <p className="text-center text-sm text-gray-500">
           Don't have an account?{" "}
-          <a
-            href="#"
-            className="text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700"
+          <Link
+            href="/signup"
+            className="text-indigo-500 transition hover:underline duration-100 hover:text-indigo-600 active:text-indigo-700"
           >
             Register
-          </a>
+          </Link>
         </p>
       </div>
     </form>
