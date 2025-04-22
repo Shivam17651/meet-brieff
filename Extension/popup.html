@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet Brief</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="/api/placeholder/48/48" alt="Meet Brief Logo">
+        <h1>Meet Brief</h1>
+      </div>
+      <p class="status">Status: <span id="status-text">Disabled</span></p>
+    </header>
+    
+    <div class="toggle-container">
+      <p>Turn Meet Brief on or off</p>
+      <label class="switch">
+        <input type="checkbox" id="extension-toggle">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    
+    <div class="info-card">
+      <h2>What does Meet Brief do?</h2>
+      <p>Meet Brief provides concise summaries of your Google Meet calls, helping you stay organized and focused.</p>
+      <button id="settings-btn" class="btn">Settings</button>
+    </div>
+    
+    <footer>
+      <button id="help-btn" class="link-btn">Help</button>
+      <button id="feedback-btn" class="link-btn">Send Feedback</button>
+    </footer>
+  </div>
+  
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="setting-item">
+          <label for="summarize-level">Summary Detail Level</label>
+          <select id="summarize-level">
+            <option value="brief">Brief</option>
+            <option value="detailed">Detailed</option>
+            <option value="comprehensive">Comprehensive</option>
+          </select>
+        </div>
+        
+        <div class="setting-item">
+          <label for="auto-summarize">Auto-summarize meetings</label>
+          <label class="switch small">
+            <input type="checkbox" id="auto-summarize" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <label for="save-history">Save meeting history</label>
+          <label class="switch small">
+            <input type="checkbox" id="save-history" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="save-settings" class="btn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
