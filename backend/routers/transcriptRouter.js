@@ -1,7 +1,7 @@
 // routers/transcriptRouter.js
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/auth');
+const auth = require('../middlewares/auth');
 const Meeting = require('../models/meetingModel');
 const Summary = require('../models/summaryModel');
 const transcriptService = require('../services/transcriptService');

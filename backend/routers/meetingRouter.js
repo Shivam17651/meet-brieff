@@ -5,7 +5,7 @@ const Meeting = require('../models/meetingModel');
 const Summary = require('../models/summaryModel');
 const User = require('../models/userModel');
 const axios = require('axios');
-const auth = require('../middleware/auth'); // Authentication middleware
+const auth = require('../middlewares/auth'); // Authentication middleware
 
 // Environment variables
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
