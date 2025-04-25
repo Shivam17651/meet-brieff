@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 const Navbar = () => {
@@ -288,12 +289,12 @@ const Navbar = () => {
                   </div>
                   {/* Button Group */}
                   <div className=" flex flex-wrap items-center gap-x-1.5">
-                    <a
+                    <Link
                       className="py-[7px] px-2.5 inline-flex items-center font-medium text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 focus:outline-hidden focus:bg-gray-100 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-                      href="#"
+                      href="/login"
                     >
                       Sign in
-                    </a>
+                    </Link>
                     <a
                       className="py-2 px-2.5 inline-flex items-center font-medium text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:bg-blue-600"
                       href="#"

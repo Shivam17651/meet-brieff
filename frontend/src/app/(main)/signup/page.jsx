@@ -3,8 +3,7 @@ import Link from 'next/link'
 import { useFormik } from 'formik';
 import React from 'react'
 import * as Yup from 'yup';
-import { Infinity } from 'ldrs/react'
-import 'ldrs/react/Infinity.css'
+
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -64,7 +63,7 @@ const Signup = () => {
  
 
   return (
-    <div className=" bg-linear-to-r from-blue-400 to-cyan-500 py-6 sm:py-8 lg:py-12 grid grid-cols-2 ">
+    <div className=" bg-linear-to-r from-blue-400 to-violet-500 py-6 sm:py-8 lg:py-12 grid grid-cols-2 ">
   <div className=" mx-auto max-w-screen-2xl px-4 md:px-8">
     <h2 className="mb-4 text-center text-4xl font-bold text-blue-800 md:mb-8 lg:text-3xl">
       SignUp
@@ -72,12 +71,12 @@ const Signup = () => {
 
 
     <form onSubmit={signupForm.handleSubmit}>
-        <div className="grid gap-y-4">
+        <div className="grid w-[60vh] px-8 py-3 bg-blue-700    rounded-lg  gap-y-4">
           {/* Form Group */}
           <div>
             <label
               htmlFor="name"
-              className="block text-sm mb-2 dark:text-white"
+              className="block text-lg font-bold mb-2 dark:text-white"
             >
               Name
             </label>
@@ -87,7 +86,7 @@ const Signup = () => {
                 id="name"
                 onChange={ signupForm.handleChange}
                 value={signupForm.values.name}
-                className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                className="py-2.5 sm:py-3 px-4 block w-full  rounded-lg sm:text-sm  disabled:opacity-50 disabled:pointer-events-none  bg-white background-white"
                 required=""
                 aria-describedby="email-error"
               />
@@ -118,7 +117,7 @@ const Signup = () => {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm mb-2 dark:text-white"
+              className="block text-lg font-bold mb-2 dark:text-white"
             >
               Email address
             </label>
@@ -128,7 +127,7 @@ const Signup = () => {
                 id="email"
                 onChange={ signupForm.handleChange}
                 value={signupForm.values.email}
-                className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                className=" py-2.5 sm:py-3 px-4 block w-full  rounded-lg sm:text-sm  disabled:opacity-50 disabled:pointer-events-none  bg-white background-white"
                 required=""
                 aria-describedby="email-error"
               />
@@ -158,17 +157,17 @@ const Signup = () => {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm mb-2 dark:text-white"
+              className="block text-lg font-bold mb-2  dark:text-white"
             >
               Password
             </label>
-            <div className="relative">
+            <div className="relative ">
               <input
                 type="password"
                 id="password"
                 onChange={ signupForm.handleChange}
                 value={signupForm.values.password}
-                className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                className="py-2.5 sm:py-3 px-4 block w-full  rounded-lg sm:text-sm  disabled:opacity-50 disabled:pointer-events-none  bg-white background-white"
                 required=""
                 aria-describedby="password-error"
               />
@@ -194,7 +193,7 @@ const Signup = () => {
           <div>
             <label
               htmlFor="confirm-password"
-              className="block text-sm mb-2 dark:text-white"
+              className="block text-lg font-bold mb-2 dark:text-white"
              >
               Confirm Password
               </label>
@@ -204,7 +203,7 @@ const Signup = () => {
                 id="confirmPassword"
                 onChange={ signupForm.handleChange}
                 value={signupForm.values.confirmPassword}
-                className="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                className="py-2.5 sm:py-3 px-4 block w-full  rounded-lg sm:text-sm  disabled:opacity-50 disabled:pointer-events-none  bg-white background-white"
                 required=""
                 aria-describedby="confirm-password-error"
               />
@@ -243,7 +242,7 @@ const Signup = () => {
               <label htmlFor="remember-me" className="text-sm dark:text-white">
                 I accept the{" "}
                 <a
-                  className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
+                  className="text-blue-300 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-300"
                   href="#"
                 >
                   Terms and Conditions
@@ -255,7 +254,7 @@ const Signup = () => {
           <button
           disabled={signupForm.isSubmitting}
             type="submit"
-            className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+            className="block rounded-lg border-white border-2 bg-blue-800 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-blue-400 hover:shadow-lg focus-visible:ring active:bg-gray-600 md:text-base"
           >
             {
               signupForm.isSubmitting ? (
@@ -273,17 +272,19 @@ const Signup = () => {
               ) : "Submit Form"
             }
           </button>
-        </div>
-      
-        <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
+
+          <p className="mt-2 text-sm text-gray-200 dark:text-neutral-200">
         Already have an account?
         <Link
-          className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
+          className="text-blue-100 ml-1 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-white-100"
           href="/login"
         >
-          Sign in here
+            Sign in here
         </Link>
       </p>
+        </div>
+      
+        
 
       </form>
       
