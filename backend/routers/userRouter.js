@@ -1,5 +1,6 @@
 const Model = require('../models/userModel');
 const express = require('express');
+const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
@@ -89,7 +90,7 @@ router.post('/authenticate' ,(req,res)=> {
             jwt.sign(
                 payload,
                 process.env.JWT_SECRET,
-                {expiresIn: 'id'},
+                {expiresIn: '1d'},
                 (err,token) => {
                     if (err) {
                         console.log(err);

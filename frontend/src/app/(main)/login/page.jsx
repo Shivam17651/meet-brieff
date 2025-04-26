@@ -4,10 +4,13 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
  
                
 const Login = () => {
+
+  const router = useRouter();
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -28,11 +31,12 @@ const Login = () => {
           console.log('Form submitted:', values);
           // Here you would typically handle authentication
           // e.g., call an API to verify credentials
-          axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users/authenticate`,values)
+          axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/authenticate`,values)
           .then((result) => {
             console.log(result.data);
             localStorage.setItem('user', result.data.token);
             toast.success("Login successful");
+            router.push('/')
             
           }).catch((err) => {
             console.log(err);
