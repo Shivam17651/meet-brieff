@@ -13,15 +13,11 @@ app.use(cors({
     origin: '*'
 }));
 
-<<<<<<< HEAD
-}))
-app.use (express.json());
-app.use('/user',userRouter);
-=======
+
 app.use(express.json({
     limit: '50mb' // Increased limit for large transcripts
 }));
->>>>>>> b2a3d725f398e7c7ca40919893c3774f605c85a6
+
 
 app.use('/users', userRouter);
 app.use('/meetings', meetingRouter);
