@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import PrelineScript from "@/components/PrelineScript";
-import Navbar from "./(main)/Navbar";
+import Navbar from "./Navbar";
 
 
 const geistSans = Geist({
@@ -26,8 +26,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PrelineScript />
+        <PrelineScript/>
         
+        <Navbar/>
         <Toaster />
         {children}
       </body>

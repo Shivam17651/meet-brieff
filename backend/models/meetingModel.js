@@ -38,7 +38,7 @@ const transcriptSegmentSchema = new Schema({
   },
   speakerId: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: 'user'
   },
   text: {
     type: String,
@@ -58,7 +58,7 @@ const actionItemSchema = new Schema({
   },
   assignedTo: [{
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: 'user'
   }],
   dueDate: {
     type: Date
@@ -90,7 +90,7 @@ const meetingSchema = new Schema({
   },
   organizer: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: 'user'
   },
   startTime: {
     type: Date,

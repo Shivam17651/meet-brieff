@@ -17,7 +17,7 @@ app.use(express.json({
     limit: '50mb' // Increased limit for large transcripts
 }));
 
-app.use('/users', userRouter);
+app.use('/user', userRouter);
 app.use('/meetings', meetingRouter);
 app.use('/transcripts', transcriptRouter);
 
@@ -33,3 +33,4 @@ app.get('/health', (req, res) => {
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
+

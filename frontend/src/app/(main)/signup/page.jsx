@@ -261,7 +261,7 @@ const Signup = () => {
                
 
 // Default values shown
-<Infinity
+<div
   size="55"
   stroke="4"
   strokeLength="0.15"
