@@ -1,51 +1,31 @@
-require('dotenv').config();
 const express = require('express');
-const userRouter = require('./routers/userRouter');
-const meetingRouter = require('./routers/meetingRouter');
-const transcriptRouter = require('./routers/transcriptRouter');
 const cors = require('cors');
+const axios = require('axios');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
-
-const port = process.env.PORT || 5000;
-
-app.use(cors({
-    origin: '*'
-}));
-
-
-app.use(express.json({
-    limit: '50mb' // Increased limit for large transcripts
-}));
-
-
-app.use('/users', userRouter);
-app.use('/meetings', meetingRouter);
-app.use('/transcripts', transcriptRouter);
-
-app.get('/', (req, res) => {
-    res.send('MeetSummary API - Automatic meeting transcript summarization');
-});
-
-// Health check endpoint
-app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'ok', timestamp: new Date() });
-});
-
-app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
-});
-
-
-const axios = require('axios');
-require('dotenv').config();
-
-
 const PORT = process.env.PORT || 3000;
+const MONGO_URI = process.env.MONGO_URI;
 
 // Middleware
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
+
+// Connect to MongoDB
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => {
+    console.error('MongoDB Connection Error:', err.message);
+    process.exit(1);
+  });
+
+// Define Routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/meetings', require('./routes/meetings'));
 
 // Health check endpoint
 app.get('/', (req, res) => {
@@ -172,5 +152,3 @@ async function generateSummary(conversation) {
 app.listen(PORT, () => {
   console.log(`Google Meet Summarizer server running on port ${PORT}`);
 });
-
-

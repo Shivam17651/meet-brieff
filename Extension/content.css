@@ -1,218 +1,419 @@
-/* Meet Brief Content Script Styles */
+/* Google Meet Caption Saver - Enhanced Styles */
 
-/* Container for Meet Brief UI */
-.meet-brief-container {
+/* Sidebar */
+#caption-saver-sidebar {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 9999;
-    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
-  }
-  
-  /* Toggle button */
-  .meet-brief-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    border-radius: 24px;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s;
-  }
-  
-  .meet-brief-toggle svg {
-    margin-right: 8px;
-  }
-  
-  .meet-brief-toggle:hover {
-    background-color: #1a73e8;
-  }
-  
-  .meet-brief-container.disabled .meet-brief-toggle {
-    background-color: #9aa0a6;
-  }
-  
-  /* Panel */
-  .meet-brief-panel {
-    position: absolute;
+    top: 0;
     right: 0;
-    bottom: 50px;
     width: 320px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -2px 0 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(320px);
+    font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
   }
   
-  .meet-brief-header {
+  #caption-saver-sidebar.visible {
+    transform: translateX(0);
+  }
+  
+  /* Sidebar Header */
+  .sidebar-header {
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
-    background-color: #f1f3f4;
-    border-bottom: 1px solid #dadce0;
+    background-color: #f8f9fa;
   }
   
-  .meet-brief-header h3 {
+  .sidebar-header h2 {
     margin: 0;
     font-size: 16px;
     font-weight: 500;
     color: #202124;
   }
   
-  .meet-brief-close {
+  .header-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .header-button {
     background: none;
     border: none;
-    font-size: 20px;
-    color: #5f6368;
     cursor: pointer;
+    color: #5f6368;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
   }
   
-  .meet-brief-content {
+  .header-button:hover {
+    background-color: rgba(95, 99, 104, 0.1);
+  }
+  
+  /* Sidebar Content */
+  .sidebar-content {
     padding: 16px;
-    max-height: 400px;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
   }
   
-  .meet-brief-live-panel {
+  /* Auth Container */
+  #auth-status-container {
+    margin-bottom: 12px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #auth-status {
+    font-size: 13px;
+    color: #5f6368;
+  }
+  
+  /* Button Styles */
+  .sidebar-button {
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
     font-size: 14px;
-    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
   }
   
-  .meet-brief-live-transcript {
-    margin-top: 12px;
-    max-height: 300px;
-    overflow-y: auto;
-    padding: 8px;
+  .sidebar-button svg {
+    margin-right: 8px;
+  }
+  
+  .sidebar-button.primary {
+    background-color: #1a73e8;
+    color: white;
+  }
+  
+  .sidebar-button.primary:hover {
+    background-color: #1967d2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  
+  .sidebar-button.secondary {
+    background-color: #ffffff;
+    color: #1a73e8;
+    border: 1px solid #dadce0;
+  }
+  
+  .sidebar-button.secondary:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  
+  .sidebar-button.success {
+    background-color: #34a853;
+    color: white;
+  }
+  
+  .sidebar-button.success:hover {
+    background-color: #1e8e3e;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  
+  .sidebar-button.warning {
+    background-color: #f9ab00;
+    color: white;
+  }
+  
+  .sidebar-button.warning:hover {
+    background-color: #f29900;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  
+  .sidebar-button.danger {
+    background-color: #ea4335;
+    color: white;
+  }
+  
+  .sidebar-button.danger:hover {
+    background-color: #d93025;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  
+  .sidebar-button.accent {
+    background-color: #9334e6;
+    color: white;
+  }
+  
+  .sidebar-button.accent:hover {
+    background-color: #8430d1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  
+  .sidebar-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Status Display */
+  #sidebar-status {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    font-size: 13px;
     background-color: #f8f9fa;
     border-radius: 4px;
+    color: #5f6368;
+    text-align: center;
   }
   
-  .transcript-entry {
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #e8eaed;
+  #sidebar-status.recording {
+    color: #ea4335;
+    font-weight: 500;
   }
   
-  .transcript-entry:last-child {
-    border-bottom: none;
-  }
-  
-  /* Summary Modal */
-  .meet-brief-summary-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-  }
-  
-  .meet-brief-summary-content {
-    width: 90%;
-    max-width: 600px;
-    max-height: 90%;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  /* Captions Section */
+  .captions-section {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 12px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
   
-  .meet-brief-summary-header {
+  .captions-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
-    background-color: #4285f4;
-    color: white;
+    margin-bottom: 8px;
   }
   
-  .meet-brief-summary-header h1 {
-    margin: 0;
-    font-size: 20px;
+  .captions-header h3 {
+    font-size: 14px;
     font-weight: 500;
+    color: #202124;
+    margin: 0;
   }
   
-  .meet-brief-summary-close {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .meet-brief-summary-body {
-    padding: 16px;
-    overflow-y: auto;
+  #sidebar-captions-list {
     flex: 1;
+    overflow-y: auto;
+    padding: 4px;
   }
   
-  .meet-brief-summary-body h2 {
+  /* Caption Entry */
+  .caption-entry {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f3f4;
+  }
+  
+  .caption-entry:last-child {
+    border-bottom: none;
+  }
+  
+  .caption-time {
+    font-size: 11px;
+    color: #80868b;
+    margin-bottom: 3px;
+  }
+  
+  .caption-speaker {
+    font-weight: 500;
+    color: #1a73e8;
+  }
+  
+  .caption-text {
+    color: #202124;
+  }
+  
+  .no-captions {
+    color: #80868b;
+    font-style: italic;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  /* Summary Section */
+  #summary-container {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 12px;
+    margin-top: 8px;
+  }
+  
+  #summary-container h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #202124;
     margin-top: 0;
-    font-size: 18px;
-    color: #202124;
+    margin-bottom: 8px;
   }
   
-  .meet-brief-summary-body h3 {
-    margin-top: 16px;
-    font-size: 16px;
-    color: #202124;
+  #summary-content {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 12px;
+    background-color: #f1f8ff;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
   }
   
-  .meet-brief-summary-body ul {
-    margin: 8px 0;
-    padding-left: 20px;
+  #summary-content strong {
+    color: #1a73e8;
   }
   
-  .meet-brief-summary-body li {
+  #summary-content ul {
+    padding-left: 16px;
+    margin: 6px 0;
+  }
+  
+  #summary-content li {
     margin-bottom: 4px;
   }
   
-  .meet-brief-summary-footer {
+  /* Toggle Button */
+  #caption-saver-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9998;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    padding: 12px 16px;
-    background-color: #f1f3f4;
-    border-top: 1px solid #dadce0;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
   }
   
-  .meet-brief-summary-footer button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
+  #caption-saver-toggle:hover {
+    background-color: #1967d2;
+    transform: scale(1.05);
+  }
+  
+  /* Settings Modal */
+  #settings-modal {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
+  }
+  
+  .settings-modal-content {
+    position: relative;
+    background-color: white;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.2s;
+  }
+  
+  @keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  
+  .settings-modal-header {
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .settings-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
     font-weight: 500;
+    color: #202124;
+  }
+  
+  .close-settings {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #5f6368;
     cursor: pointer;
   }
   
-  .meet-brief-copy-btn {
-    background-color: #4285f4;
-    color: white;
+  .settings-modal-body {
+    padding: 16px;
   }
   
-  .meet-brief-copy-btn:hover {
-    background-color: #1a73e8;
+  .settings-item {
+    margin-bottom: 16px;
   }
   
-  .meet-brief-download-btn {
-    background-color: #f1f3f4;
-    color: #1a73e8;
-    border: 1px solid #dadce0 !important;
+  .settings-item label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #5f6368;
   }
   
-  .meet-brief-download-btn:hover {
-    background-color: #e8eaed;
+  .settings-item input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #202124;
+  }
+  
+  .settings-item input[type="text"]:focus {
+    outline: none;
+    border-color: #1a73e8;
+  }
+  
+  .settings-modal-footer {
+    padding: 12px 16px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Downloaded link (hidden) */
+  #sidebar-download-link {
+    display: none;
+  }
+  
+  /* Animation */
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+  
+  .recording-pulse {
+    animation: pulse 2s infinite;
   }

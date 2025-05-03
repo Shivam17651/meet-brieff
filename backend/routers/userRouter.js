@@ -1,124 +1,111 @@
-const Model = require('../models/userModel');
 const express = require('express');
-const jwt = require('jsonwebtoken');
-
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+const auth = require('../middleware/auth');
+const User = require('../models/User');
 
-router.post('/add' ,(req,res) => {
-    new Model(req.body).save()
-    .then((result) => {
-        res.status(200).json(result)
-        
-    }).catch((err) => {
-        res.status(500).json(error)
-        
+// Set a default JWT secret if not provided in environment variables
+const JWT_SECRET = process.env.JWT_SECRET || 'capmeet_default_secret_key';
+
+// @route   POST api/auth/register
+// @desc    Register a user
+// @access  Public
+router.post('/register', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  try {
+    // Check if user already exists
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
+
+    // Create new user
+    user = new User({
+      username,
+      email,
+      password
     });
+
+    // Save user to database
+    await user.save();
+
+    // Create JWT payload
+    const payload = {
+      user: {
+        id: user.id
+      }
+    };
+
+    // Sign token
+    jwt.sign(
+      payload,
+      JWT_SECRET,
+      { expiresIn: '7d' },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 });
 
-router.get('/getall' , (req,res)=> {
-    Model.find()
-    .then((result) => {
-        res.status(200).json(result)
-        
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json
-        
-        
-    });
+// @route   POST api/auth/login
+// @desc    Authenticate user & get token
+// @access  Public
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Check if user exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    // Check password
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    // Create JWT payload
+    const payload = {
+      user: {
+        id: user.id
+      }
+    };
+
+    // Sign token
+    jwt.sign(
+      payload,
+      JWT_SECRET,
+      { expiresIn: '7d' },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 });
 
-router.get('/getbyid/:id', (req,res)=> {
-    Model.findById(req.params.id)
-    .then((result) => {
-        res.status(200).json(result)
-        
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json(err)
-        
-        
-    });
+// @route   GET api/auth/user
+// @desc    Get authenticated user
+// @access  Private
+router.get('/user', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 });
 
-router.get('/getbyemail/:email' , (req,res)=>{
-    Model.findOne({email: req.params.email})
-    .then((result) => {
-        res.status(200).json(result)
-        
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json(err)
-        
-        
-    });
-});
-
-router.delete('/delete/:id', (req,res)=>{
-    Model.findByIdAndDelete(req.params.id)
-    .then((result) => {
-        res.status(200).json(result)
-        
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json(err)
-        
-        
-    });
-});
-
-router.put('/update/:id' , (req,res) => {
-    Model.findByIdAndUpdate(req.params.id ,req.body ,{new:true})
-    .then((result) => {
-        res.status(200).json(result)
-        
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-        
-        
-    });
-});
-
-router.post('/authenticate' ,(req,res)=> {
-    Model.findOne(req.body)
-    .then((result) => {
-        if (result) {
-            const {_id,name,email} = result;
-            const payload = {_id,name,email};
-
-            jwt.sign(
-                payload,
-                process.env.JWT_SECRET,
-                {expiresIn: '1d'},
-                (err,token) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).json(err);
-                        
-                        
-                    } else {
-                        res.status(200).json({token});
-                        
-                    }
-                }
-            )
-            
-            
-        } else {
-            res.status(401).json({message : 'Invalid credentials'});
-            
-        }
-        
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json(err)
-        
-        
-    });
-});
-
-
-
-
-module.exports = router;
+module.exports = router; 
