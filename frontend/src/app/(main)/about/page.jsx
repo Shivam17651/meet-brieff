@@ -47,8 +47,8 @@ useEffect(() => {
         <div className='col-span-2 ml-20 '>
             <div className='col-span-1 '><img className='rounded-lg hover:shadow-2xl hover:border-2 hover:border-gray-200  h-full ' src="https://b2729162.smushcdn.com/2729162/wp-content/uploads/2024/04/meeting-notes-1024x684.jpg?lossy=1&strip=1&webp=1" alt="" />
             </div>
-            <div className=''><img className=' rounded-lg shadow-lg mx-auto w-50 h-50  -translate-18' data-aos="fade-up" src="https://st1.techlusive.in/wp-content/uploads/2024/08/Goole-Meet.jpg" alt="" /></div>
-            
+           
+             <div className=''><img className=' rounded-lg shadow-lg mx-auto w-50 h-50  -translate-18' data-aos="fade-up" src="https://st1.techlusive.in/wp-content/uploads/2024/08/Goole-Meet.jpg" alt="" /></div>
 
         </div>
 
@@ -125,8 +125,8 @@ useEffect(() => {
         </div>
         <div className='rounded-lg  ' data-aos="zoom-in">
         <img className='h-120 rounded-lg shadow-lg ' src="/image/Saurabh.jpg" alt="" />
-        <div className='font-bold -translate-y-40 border  bg-white mx-3 rounded-lg shadow-lg px-4 w-60'>
-          <h1 className='text-xl text-red-800 underline '>SAURABH TIWARI</h1>
+        <div className='font-bold -translate-y-40 border  bg-white mx-3 rounded-lg shadow-lg px-4 w-50'>
+          <h1 className='text-lg text-red-800 underline '>SAURABH TIWARI</h1>
           <p className='text-lg text-red-500  '>Developer</p>
           <div className='flex py-2 gap-2'>
           <img className='h-8 w-8 bg-white rounded-full' src="/image/github-brands.svg" alt="" />

@@ -4,13 +4,10 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
  
                
 const Login = () => {
-
-  const router = useRouter();
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -36,7 +33,7 @@ const Login = () => {
             console.log(result.data);
             localStorage.setItem('user', result.data.token);
             toast.success("Login successful");
-            router.push('/')
+            Router.push('/')
             
           }).catch((err) => {
             console.log(err);

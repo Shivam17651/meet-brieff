@@ -152,3 +152,5 @@ async function generateSummary(conversation) {
 app.listen(PORT, () => {
   console.log(`Google Meet Summarizer server running on port ${PORT}`);
 });
+
+

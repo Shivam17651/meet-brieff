@@ -45,7 +45,7 @@ const summarySchema = new Schema({
   },
   createdBy: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: 'user'
   }
 });
 

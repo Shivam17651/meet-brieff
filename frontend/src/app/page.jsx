@@ -24,8 +24,16 @@ const Home = () => {
         
       </div>
 
-      <div className='col-span-1 p-10 mt-10 ' data-aos = "flip-left">
+     
+      <div>
+      <div className='relative col-span-1 p-10 mt-10 ' data-aos = "flip-left">
+       
         <img src="https://static.vecteezy.com/system/resources/thumbnails/018/742/939/small_2x/laptop-computer-with-blank-transparent-screen-and-background-format-png.png" alt="" />
+        <div className=''><img className='absolute inset-x-0 bottom-42 rounded-lg shadow-lg mx-auto w-76 h-45  ' src="/image/meet.jpg"   alt="" /></div>
+      </div>
+
+       
+
       </div>
 
       </div>
@@ -50,31 +58,33 @@ const Home = () => {
         <Marquee pauseOnHover autoFill >
 
           <div className='grid grid-cols-5  p-10 mt-10 w-1/2  gap-10' data-aos = "fade-up">
-            <div className='col-span-1 p-20 border-2 mt-20 ml-20 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500 w-[85%]'>
-              <h2 className='text-5xl font-bold text-white'> Easy To Use</h2>
+            <div className='col-span-1 px-5 py-20 border-2 mr-20 mt-20 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500 w-[85%]'>
+              <h2 className='text-5xl font-bold text-white'> Extension </h2>
               <p className='font-semibold text-white mt-5 '>Our product is user-friendly, intuitive, and designed for seamless navigation,</p>
               <p className='font-semibold text-white'>ensuring a smooth experience with minimal effort</p>
             </div>
-            <div className='col-span-1 p-20 border-2 mt-20 ml-10 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500  w-[85%]'>
-              <h2 className='text-5xl font-bold text-white'> Easy To Use</h2>
-              <p className='font-semibold text-white mt-5 '>Our product is user-friendly, intuitive, and designed for seamless navigation,</p>
-              <p className='font-semibold text-white'>ensuring a smooth experience with minimal effort</p>
-            </div>
-            <div className='col-span-1 p-20 border-2 mt-20 mr-20 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500  w-[85%]'>
-              <h2 className='text-5xl font-bold text-white'> Easy To Use</h2>
+           
+            <div className='col-span-1 px-5 py-20 border-2 mt-20 mr-20 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500  w-[85%]'>
+              <h2 className='text-5xl font-bold text-white'>Reliable</h2>
               <p className='font-semibold text-white mt-5'>Our product is user-friendly, intuitive, and designed for seamless navigation,</p>
               <p className='font-semibold text-white'>ensuring a smooth experience with minimal effort</p>
             </div>
-            <div className='col-span-1 p-20 border-2 mt-20 mr-20 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500  w-[85%]'>
-              <h2 className='text-5xl font-bold text-white'> Easy To Use</h2>
+            <div className='col-span-1 px-5 py-20 border-2 mt-20 mr-20 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500  w-[85%]'>
+              <h2 className='text-5xl font-bold text-white'> Summary </h2>
               <p className='font-semibold text-white mt-5'>Our product is user-friendly, intuitive, and designed for seamless navigation,</p>
               <p className='font-semibold text-white'>ensuring a smooth experience with minimal effort</p>
             </div>
-            <div className='col-span-1 p-20 border-2 mt-20 mr-20 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500  w-[85%]'>
-              <h2 className='text-5xl font-bold text-white'> Easy To Use</h2>
+            <div className='col-span-1 px-5 py-20 border-2 mt-20 mr-20 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500  w-[85%]'>
+              <h2 className='text-5xl font-bold text-white'> Download </h2>
               <p className='font-semibold text-white mt-5'>Our product is user-friendly, intuitive, and designed for seamless navigation,</p>
               <p className='font-semibold text-white'>ensuring a smooth experience with minimal effort</p>
             </div>
+            <div className='col-span-1 px-5 py-20 border-2 mt-20 mr-20 shadow-2xl bg-linear-to-t from-sky-500 to-indigo-500  w-[85%]'>
+              <h2 className='text-5xl font-bold text-white'> Accessable </h2>
+              <p className='font-semibold text-white mt-5'>Our product is user-friendly, intuitive, and designed for seamless navigation,</p>
+              <p className='font-semibold text-white'>ensuring a smooth experience with minimal effort</p>
+            </div>
+            
       
           </div>
 
@@ -107,7 +117,7 @@ const Home = () => {
 
         <div className='grid grid-cols-2'>
 
-        <div className='p-20  col-span-1 ml-5' data-aos = "fade-up" >
+        <div className='p-5  col-span-1 ml-5' data-aos = "fade-up" >
           <h2 className='text-blue-500 text-4xl font-bold mt-25 ml-20 '>Download Our Product From </h2>
           <h2 className='text-blue-800 text-5xl font-bold  ml-20 '>Chrome </h2>
         </div>

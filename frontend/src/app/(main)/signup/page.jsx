@@ -258,12 +258,17 @@ const Signup = () => {
           >
             {
               signupForm.isSubmitting ? (
-                <div
-                size="45"
-                speed="2"
-                color="white" 
-              />
+               
 
+// Default values shown
+<div
+  size="55"
+  stroke="4"
+  strokeLength="0.15"
+  bgOpacity="0.1"
+  speed="1.3"
+  color="black" 
+/>
               ) : "Submit Form"
             }
           </button>
